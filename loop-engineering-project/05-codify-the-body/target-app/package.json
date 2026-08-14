@@ -1,0 +1,10 @@
+{
+  "name": "project5-target-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project 05 candidate bugs used by the codified fix-loop workflow engine.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
