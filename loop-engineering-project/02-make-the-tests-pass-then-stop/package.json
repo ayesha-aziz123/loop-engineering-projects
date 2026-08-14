@@ -1,0 +1,10 @@
+{
+  "name": "make-the-tests-pass-then-stop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project 02: demonstrates a conditional maker-checker loop.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
