@@ -1,0 +1,10 @@
+{
+  "name": "doorbell-loop-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project 06: The Doorbell Loop -- minimal app used to demonstrate a GitHub pull-request-triggered automated code review.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

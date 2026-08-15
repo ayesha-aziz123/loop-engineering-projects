@@ -1,0 +1,45 @@
+name: Claude PR Review
+
+# Project 06 doorbell: this workflow IS the doorbell. It rings (runs) on
+# every pull-request "opened" event (the first knock) and on every
+# "synchronize" event (a follow-up push to the same PR rings it again).
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are reviewing a pull request for this repository as an
+            independent, automated reviewer. You did not write the change.
+
+            1. Look at the diff introduced by this PR (compare against the
+               PR's base branch).
+            2. Carefully check for correctness bugs -- in particular
+               off-by-one errors in bounds/loop conditions and missing
+               null/undefined checks, since those are the most common bugs
+               planted in this repo's demo PRs, but flag any genuine bug you
+               find, not only those two categories.
+            3. For anything you flag, be concrete: name the file, the line,
+               what input would break, and what the correct behavior should
+               be.
+            4. Post your findings as a single PR comment. If you find no
+               bugs, say so explicitly and briefly explain what you checked.
+
+            Do not modify any files. This is a review-only pass.
