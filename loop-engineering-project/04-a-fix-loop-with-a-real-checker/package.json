@@ -1,0 +1,10 @@
+{
+  "name": "a-fix-loop-with-a-real-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project 04: a fix loop that runs a real checker and a separate reviewer agent before any PR is eligible.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}
